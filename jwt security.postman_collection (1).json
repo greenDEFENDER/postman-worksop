@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "c3c895fa-bd19-4701-849d-e330d2f70f8d",
+		"name": "jwt security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21175293"
+	},
+	"item": [
+		{
+			"name": "revokeToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsibW9kaWZ5IiwiZGVsZXRlIl19.-tYbfMFdQl5qkOZrFX4XNuybekPYJDVEjkDScPdl5ig",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX2FkbWluIl0sInVzZXJuYW1lIjoiYWJoYXkiLCJpYXQiOjE2NTg0OTE1NDh9.bFR_y5cjXSWFMxsVb_SUqyYjsweWKQOizfBb6bcL3Mw\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/revokeToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"revokeToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resource",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX2FkbWluIl0sInVzZXJuYW1lIjoiYWJoYXkiLCJpYXQiOjE2NTg3NDQxMTMsImV4cCI6MTY1ODc0NDI5M30.ZNdca4sxnmuSkSGElZ7cClWukb9otoRO3UrrD9glxeI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/resource",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSecret/admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "businessServer",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "businessServer",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:9999/secret/abhay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"secret",
+						"abhay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getToken",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "secret",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "client",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "userName",
+						"value": "abhay",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "abhay",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9999/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"abc\",\r\n    \"password\": \"abc\",\r\n    \"roles\": [\r\n        \"ROLE_admin\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9999/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9999",
+					"path": [
+						"save"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
